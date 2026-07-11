@@ -1,0 +1,26 @@
+{
+  "name": "live-ops-console",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pulse — a real-time operations console for a multiplayer game. The world is simulated client-side and rendered on canvas; no backend.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test \"src/**/*.test.ts\""
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.0"
+  }
+}
