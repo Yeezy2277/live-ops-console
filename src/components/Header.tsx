@@ -1,9 +1,30 @@
+import { useEffect, useState } from "react";
 import { store, useTick } from "../store/store";
+
+type Theme = "dark" | "light";
+
+function initialTheme(): Theme {
+  try {
+    return localStorage.getItem("pulse-theme") === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+}
 
 export function Header() {
   useTick();
   const { running } = store;
   const anyDown = store.world.regions.some((r) => r.status !== "healthy");
+  const [theme, setTheme] = useState<Theme>(initialTheme);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("pulse-theme", theme);
+    } catch {
+      /* private mode */
+    }
+  }, [theme]);
 
   return (
     <header className="hdr">
@@ -20,9 +41,19 @@ export function Header() {
           <i />
           {anyDown ? "Incidents active" : "All systems nominal"}
         </span>
-        <button className="hdr__btn" onClick={store.toggle}>
-          {running ? "❚❚ Pause" : "▶ Resume"}
-        </button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button
+            className="hdr__btn"
+            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Light theme" : "Dark theme"}
+          >
+            {theme === "dark" ? "☀" : "☾"}
+          </button>
+          <button className="hdr__btn" onClick={store.toggle}>
+            {running ? "❚❚ Pause" : "▶ Resume"}
+          </button>
+        </div>
       </div>
     </header>
   );

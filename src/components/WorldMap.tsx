@@ -42,8 +42,16 @@ export function WorldMap() {
     const draw = (t: number) => {
       ctx.clearRect(0, 0, w, h);
 
+      // Theme-aware palette, read per frame (cheap) so the canvas follows the
+      // toggle without React involvement.
+      const light = document.documentElement.dataset.theme === "light";
+      const dotColor = light ? "#cdd6e2" : "#1a2230";
+      const labelColor = light ? "#17202b" : "#e6edf3";
+      const subColor = light ? "#5d6a79" : "#9aa7b4";
+      const meshColor = light ? "rgba(47,111,228,0.10)" : "rgba(76,141,255,0.08)";
+
       // Dotted-grid backdrop suggesting a world surface.
-      ctx.fillStyle = "#1a2230";
+      ctx.fillStyle = dotColor;
       const gap = 26;
       for (let x = gap; x < w; x += gap) {
         for (let y = gap; y < h; y += gap) {
@@ -54,7 +62,7 @@ export function WorldMap() {
       const { regions } = store.world;
 
       // Faint links between regions (mesh feel).
-      ctx.strokeStyle = "rgba(76,141,255,0.08)";
+      ctx.strokeStyle = meshColor;
       ctx.lineWidth = 1;
       for (let i = 0; i < regions.length; i++) {
         for (let j = i + 1; j < regions.length; j++) {
@@ -97,11 +105,11 @@ export function WorldMap() {
         ctx.stroke();
 
         // Label.
-        ctx.fillStyle = "#e6edf3";
+        ctx.fillStyle = labelColor;
         ctx.font = "600 12px -apple-system, system-ui, sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(r.name, cx, cy - radius - 10);
-        ctx.fillStyle = "#9aa7b4";
+        ctx.fillStyle = subColor;
         ctx.font = "11px ui-monospace, monospace";
         ctx.fillText(`${r.players.toLocaleString("en-US")} · ${r.latencyMs}ms`, cx, cy + radius + 18);
       }
