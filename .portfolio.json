@@ -1,7 +1,7 @@
 {
   "title": "Pulse — Live Ops Console",
   "summary": "A real-time game-ops console: the world is simulated client-side and painted on canvas — high-frequency state, 60fps rendering decoupled from React, and a debounced event feed. No backend.",
-  "liveUrl": "https://live-ops-console.vercel.app",
+  "liveUrl": "https://pulse.vitaliipopov.dev",
   "tags": ["React", "TypeScript", "Canvas", "Real-time"],
   "embeddable": true,
   "featured": false,
