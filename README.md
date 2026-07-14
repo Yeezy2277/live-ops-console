@@ -7,7 +7,7 @@ A real-time operations console for a fictional multiplayer game — the kind of
 is *simulated on the client* and painted on `<canvas>`, so the whole thing runs
 as a static site on free hosting.
 
-> **Live:** _add your Vercel URL here_
+> **Live demo:** <https://pulse.vitaliipopov.dev> · no backend, no login
 
 It's a deliberate change of register from the rest of my portfolio (which is
 Contentful-heavy): this one is about **real-time UI** — high-frequency state,
