@@ -1,6 +1,7 @@
 # Pulse — Live Ops Console
 
 [![CI](https://github.com/Yeezy2277/live-ops-console/actions/workflows/ci.yml/badge.svg)](https://github.com/Yeezy2277/live-ops-console/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Yeezy2277/live-ops-console/actions/workflows/codeql.yml/badge.svg)](https://github.com/Yeezy2277/live-ops-console/actions/workflows/codeql.yml)
 
 A real-time operations console for a fictional multiplayer game — the kind of
 "control room" a live-ops team watches. **There is no backend:** the game world
