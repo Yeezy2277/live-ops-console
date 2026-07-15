@@ -15,6 +15,12 @@ Contentful-heavy): this one is about **real-time UI** — high-frequency state,
 smooth 60fps canvas rendering, and keeping React out of the hot path — the kind
 of work I did owning the client UI of a real-time multiplayer game.
 
+## Performance
+
+Lighthouse (PageSpeed Insights) on the live app — mobile:
+
+![Lighthouse scores — Performance 98, Accessibility 93, Best Practices 100, SEO 100](./docs/lighthouse.png)
+
 ## What it shows
 
 - **World map** — regions as pulsing canvas markers, sized by population and
