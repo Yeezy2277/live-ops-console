@@ -1,4 +1,4 @@
-import { test } from "node:test";
+import { test } from "vitest";
 import assert from "node:assert/strict";
 import { createRng } from "./rng.ts";
 import { World } from "./world.ts";
@@ -73,4 +73,34 @@ test("world: top items stay sorted by volume", () => {
   const vols = w.economy.topItems.map((i) => i.volume);
   const sorted = [...vols].sort((a, b) => b - a);
   assert.deepEqual(vols, sorted);
+});
+
+test("world: injected incidents take effect immediately and are logged", () => {
+  const w = new World(3);
+  assert.equal(w.inject("eu-c", "outage"), true);
+  const eu = w.regions.find((r) => r.id === "eu-c")!;
+  assert.equal(eu.status, "down");
+  assert.equal(w.events[0]?.severity, "critical");
+  assert.equal(w.inject("nowhere", "outage"), false);
+});
+
+test("world: a surge never pushes a region past capacity", () => {
+  const w = new World(4);
+  for (let i = 0; i < 5; i++) w.inject("apac", "surge");
+  const apac = w.regions.find((r) => r.id === "apac")!;
+  assert.equal(apac.players, apac.capacity);
+  assert.equal(w.metrics.playersOnline, w.regions.reduce((s, r) => s + r.players, 0));
+});
+
+test("world: same seed and same injections replay identically", () => {
+  const play = () => {
+    const w = new World(77);
+    for (let i = 0; i < 100; i++) {
+      if (i === 20) w.inject("na-e", "latency");
+      if (i === 50) w.inject("apac", "surge");
+      w.step();
+    }
+    return w.regions.map((r) => [r.players, r.latencyMs, r.status]);
+  };
+  assert.deepEqual(play(), play());
 });
