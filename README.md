@@ -67,6 +67,16 @@ Lighthouse (PageSpeed Insights) on the live app — mobile:
   decoupled from React reconciliation. That split (cheap UI at tick rate,
   expensive drawing at frame rate) is the whole point.
 
+## Design
+
+A flight-deck display: Chakra Petch for labels, JetBrains Mono for every
+number, graphite panels with HUD corner brackets, and a radar-scope map with
+scanlines and a slow sweep. Colour follows avionics convention so it carries
+meaning: cyan is information and the selected control, green nominal, amber
+caution, red warning. Panels boot in with one staggered reveal; all motion
+(including the sweep and the pulsing markers) stops under
+`prefers-reduced-motion`. Light theme reads as the same cockpit in daylight.
+
 ## Run it
 
 ```bash
@@ -76,5 +86,5 @@ npm test           # sim, alerting and RNG unit tests (node --test, no extra dep
 npm run build      # static bundle in dist/
 ```
 
-Stack: React 18 · TypeScript · Vite · Canvas 2D. No runtime dependencies beyond
+Stack: React 18 · TypeScript · Vite · Canvas 2D · Google Fonts (Chakra Petch, JetBrains Mono). No runtime dependencies beyond
 React — ~50 kB gzipped.

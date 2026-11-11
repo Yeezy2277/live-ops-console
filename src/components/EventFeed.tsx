@@ -4,12 +4,12 @@ import { useDebounced } from "../hooks";
 import type { EventKind, Severity } from "../sim/world";
 
 const KIND_DOT: Record<EventKind, string> = {
-  join: "#4c8dff",
-  leave: "#6b7787",
-  match: "#2dd4a0",
-  trade: "#f5b544",
-  alert: "#e2564a",
-  recover: "#9a7bff",
+  join: "var(--dim)",
+  leave: "var(--dim)",
+  match: "var(--accent)",
+  trade: "var(--muted)",
+  alert: "var(--warning)",
+  recover: "var(--ok)",
 };
 
 const SEV_CLASS: Record<Severity, string> = {
