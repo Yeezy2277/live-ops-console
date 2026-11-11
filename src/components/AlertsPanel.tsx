@@ -8,15 +8,20 @@ export function AlertsPanel() {
   const alerts = store.alerts.active();
   const now = store.world.tick;
 
-  if (alerts.length === 0) {
-    return (
-      <div className="alerts alerts--empty">
-        <p>No open alerts.</p>
-        <p className="alerts__hint">Inject an incident to watch one open, wait out its threshold, and resolve.</p>
-      </div>
-    );
-  }
+  // The live region wraps both states so opening and resolving are announced.
+  return <div aria-live="polite">{alerts.length === 0 ? <Empty /> : <List alerts={alerts} now={now} />}</div>;
+}
 
+function Empty() {
+  return (
+    <div className="alerts alerts--empty">
+      <p>No open alerts.</p>
+      <p className="alerts__hint">Inject an incident to watch one open, wait out its threshold, and resolve.</p>
+    </div>
+  );
+}
+
+function List({ alerts, now }: { alerts: ReturnType<typeof store.alerts.active>; now: number }) {
   return (
     <ul className="alerts">
       {alerts.map((a) => (
@@ -29,7 +34,11 @@ export function AlertsPanel() {
           {a.acknowledged ? (
             <span className="alert__acked">acked</span>
           ) : (
-            <button className="alert__ack" onClick={() => store.acknowledge(a.id)}>
+            <button
+              className="alert__ack"
+              onClick={() => store.acknowledge(a.id)}
+              aria-label={`Acknowledge ${a.label} in ${a.region}`}
+            >
               Ack
             </button>
           )}

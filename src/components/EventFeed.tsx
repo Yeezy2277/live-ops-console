@@ -40,16 +40,19 @@ export function EventFeed() {
     <div className="feed">
       <div className="feed__controls">
         <input
+          type="search"
           className="feed__search"
+          aria-label="Search events by message or region"
           placeholder="Search events…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <div className="feed__filters">
+        <div className="feed__filters" role="group" aria-label="Filter by event kind">
           {FILTERS.map((f) => (
             <button
               key={f}
               className={f === kind ? "chip chip--on" : "chip"}
+              aria-pressed={f === kind}
               onClick={() => setKind(f)}
             >
               {f}
@@ -58,11 +61,12 @@ export function EventFeed() {
         </div>
       </div>
 
-      <div className="feed__list">
+      {/* Not a live region on purpose: at 4 Hz it would flood a screen reader; the alerts panel announces what matters. */}
+      <div className="feed__list" tabIndex={0} role="region" aria-label="Recent events, newest first">
         {rows.length === 0 && <div className="feed__empty">No matching events.</div>}
         {rows.map((e) => (
           <div key={e.id} className={`feed__row ${SEV_CLASS[e.severity]}`}>
-            <span className="feed__dot" style={{ background: KIND_DOT[e.kind] }} />
+            <span className="feed__dot" style={{ background: KIND_DOT[e.kind] }} aria-hidden="true" />
             <span className="feed__tick">#{e.tick}</span>
             <span className="feed__msg">{e.message}</span>
           </div>

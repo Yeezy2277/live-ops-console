@@ -48,11 +48,11 @@ export function ControlPanel() {
         <button className="ctl__btn" onClick={store.stepOnce} disabled={store.running} title="Pause first, then advance one tick at a time">
           Step 1 tick
         </button>
-        <span className="ctl__tick">tick {store.world.tick}</span>
+        <span className="ctl__tick" aria-label={`Current tick ${store.world.tick}`}>tick {store.world.tick}</span>
       </div>
       <div className="ctl__row">
         <span className="ctl__seed">seed {store.seed}</span>
-        <button className="ctl__link" onClick={copy}>
+        <button className="ctl__link" onClick={copy} aria-live="polite">
           {copied ? "Link copied" : "Copy replay link"}
         </button>
       </div>

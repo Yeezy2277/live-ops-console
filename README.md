@@ -82,7 +82,7 @@ caution, red warning. Panels boot in with one staggered reveal; all motion
 ```bash
 npm install
 npm run dev        # http://localhost:5173
-npm test           # sim, alerting and RNG unit tests (node --test, no extra deps)
+npm test           # Vitest: sim, alerting and RNG unit tests + component tests (RTL, jsdom)
 npm run build      # static bundle in dist/
 ```
 

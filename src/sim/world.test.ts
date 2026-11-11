@@ -1,4 +1,4 @@
-import { test } from "node:test";
+import { test } from "vitest";
 import assert from "node:assert/strict";
 import { createRng } from "./rng.ts";
 import { World } from "./world.ts";
