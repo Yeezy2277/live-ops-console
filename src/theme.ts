@@ -23,7 +23,7 @@ export type Palette = {
 const DARK: Palette = {
   text: "#e4ece6",
   muted: "#97a39b",
-  dim: "#5f6a63",
+  dim: "#828e86",
   accent: "#3fd6e4",
   ok: "#46d68a",
   caution: "#ffb020",
@@ -36,13 +36,13 @@ const DARK: Palette = {
 const LIGHT: Palette = {
   text: "#151a17",
   muted: "#4d5a52",
-  dim: "#7d877f",
-  accent: "#00808d",
-  ok: "#1d8a4b",
+  dim: "#5b655d",
+  accent: "#006a74",
+  ok: "#14713c",
   caution: "#a86300",
   warning: "#c4342b",
   mapGrid: "#c5ccc4",
-  mapLink: "rgba(0, 128, 141, 0.14)",
+  mapLink: "rgba(0, 106, 116, 0.14)",
   scanline: "rgba(21, 26, 23, 0.03)",
 };
 

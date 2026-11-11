@@ -30,7 +30,7 @@ export function PerfHud() {
   }, []);
 
   return (
-    <div className="hud" aria-label="Rendering performance, measured live">
+    <div className="hud" role="group" aria-label="Rendering performance, measured live">
       <span>
         <b>{rates.canvas}</b> canvas fps
       </span>

@@ -1,4 +1,4 @@
-import { test } from "node:test";
+import { test } from "vitest";
 import assert from "node:assert/strict";
 import { AlertEngine, type AlertRule } from "./alerts.ts";
 import type { Region } from "./world.ts";
