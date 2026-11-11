@@ -29,10 +29,10 @@ export function Header() {
   return (
     <header className="hdr">
       <div className="hdr__brand">
-        <span className="hdr__logo">◈</span>
+        <span className="hdr__logo" aria-hidden="true" />
         <div>
           <div className="hdr__title">Pulse</div>
-          <div className="hdr__sub">Live Ops Console</div>
+          <div className="hdr__sub">Live ops console · seed {store.seed}</div>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ export function Header() {
           <i />
           {anyDown ? "Incidents active" : "All systems nominal"}
         </span>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div className="hdr__actions">
           <button
             className="hdr__btn"
             onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}

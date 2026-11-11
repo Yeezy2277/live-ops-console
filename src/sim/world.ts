@@ -50,7 +50,7 @@ const REGION_SEED: Omit<Region, "players" | "latencyMs" | "status">[] = [
   { id: "na-w", name: "NA-West", x: 0.12, y: 0.46, capacity: 7000 },
   { id: "sa-e", name: "SA-East", x: 0.31, y: 0.72, capacity: 5000 },
   { id: "eu-c", name: "EU-Central", x: 0.52, y: 0.34, capacity: 11000 },
-  { id: "eu-n", name: "EU-North", x: 0.5, y: 0.24, capacity: 6000 },
+  { id: "eu-n", name: "EU-North", x: 0.43, y: 0.16, capacity: 6000 },
   { id: "apac", name: "APAC", x: 0.82, y: 0.52, capacity: 12000 },
 ];
 
