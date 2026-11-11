@@ -40,6 +40,7 @@ export function WorldMap() {
     ro.observe(wrap);
 
     const draw = (t: number) => {
+      const started = performance.now();
       ctx.clearRect(0, 0, w, h);
 
       // Theme-aware palette, read per frame (cheap) so the canvas follows the
@@ -114,6 +115,8 @@ export function WorldMap() {
         ctx.fillText(`${r.players.toLocaleString("en-US")} · ${r.latencyMs}ms`, cx, cy + radius + 18);
       }
 
+      store.perf.canvasFrames++;
+      store.perf.frameMsTotal += performance.now() - started;
       raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);

@@ -23,6 +23,7 @@ export type Region = {
 };
 
 export type EventKind = "join" | "leave" | "match" | "trade" | "alert" | "recover";
+export type IncidentKind = "latency" | "outage" | "surge";
 export type Severity = "info" | "warn" | "critical";
 
 export type GameEvent = {
@@ -95,6 +96,11 @@ export class World {
     this.recompute();
   }
 
+  /** Public entry for events raised outside the sim (alerting, operator actions). */
+  log(kind: EventKind, region: string, message: string, severity: Severity) {
+    this.emit(kind, region, message, severity);
+  }
+
   private emit(kind: EventKind, region: string, message: string, severity: Severity) {
     this.events.unshift({ id: ++this.eventSeq, tick: this.tick, kind, region, message, severity });
     if (this.events.length > 200) this.events.length = 200;
@@ -121,6 +127,30 @@ export class World {
     push(this.history.matches, this.metrics.matchesPerMin);
     push(this.history.credits, this.metrics.creditsPerMin);
     push(this.history.latency, this.metrics.p95LatencyMs);
+  }
+
+  /**
+   * Operator-triggered incident, for the demo controls. Deterministic (no RNG),
+   * so a replayed seed plus the same injections at the same ticks reproduces a run.
+   * The world's normal dynamics then take over: latency decays, regions recover.
+   */
+  inject(regionId: string, kind: IncidentKind) {
+    const r = this.regions.find((x) => x.id === regionId);
+    if (!r) return false;
+    if (kind === "latency") {
+      r.status = "degraded";
+      r.latencyMs = clamp(r.latencyMs + 220, 12, 800);
+      this.emit("alert", r.name, `Operator injected a latency spike in ${r.name}`, "warn");
+    } else if (kind === "outage") {
+      r.status = "down";
+      r.latencyMs = 400;
+      this.emit("alert", r.name, `Operator took ${r.name} offline`, "critical");
+    } else {
+      r.players = Math.min(r.capacity, Math.round(r.players + r.capacity * 0.35));
+      this.emit("join", r.name, `Operator injected a player surge into ${r.name}`, "warn");
+    }
+    this.recompute();
+    return true;
   }
 
   step() {
