@@ -1,8 +1,13 @@
 {
-  "title": "Pulse — Live Ops Console",
-  "summary": "A real-time game-ops console: the world is simulated client-side and painted on canvas — high-frequency state, 60fps rendering decoupled from React, and a debounced event feed. No backend.",
+  "title": "Pulse",
+  "summary": "A real-time console for a multiplayer game. The world is simulated in the browser and painted on canvas at 60 fps, outside React's render cycle. Break a region, watch the alert wait out its threshold, step through it tick by tick and share the seed to replay the run. No backend.",
   "liveUrl": "https://pulse.vitaliipopov.dev",
-  "tags": ["React", "TypeScript", "Canvas", "Real-time"],
+  "tags": [
+    "React",
+    "TypeScript",
+    "Canvas",
+    "Real-time"
+  ],
   "embeddable": true,
   "featured": false,
   "order": 3
