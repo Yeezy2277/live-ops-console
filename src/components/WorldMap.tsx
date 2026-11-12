@@ -151,7 +151,7 @@ export function WorldMap() {
         if (w >= 520) {
           ctx.fillStyle = p.muted;
           ctx.font = `11px ${FONT_MONO}`;
-          ctx.fillText(`${r.players.toLocaleString("en-US")} · ${r.latencyMs}ms`, cx, cy + k + 16);
+          ctx.fillText(`${r.players.toLocaleString("en-US")} / ${r.latencyMs} ms`, cx, cy + k + 16);
         }
       }
 

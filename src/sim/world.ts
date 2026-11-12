@@ -219,7 +219,7 @@ export class World {
     }
     if (this.rng.chance(0.35)) {
       const r = this.rng.pick(this.regions);
-      this.emit("match", r.name, `Match resolved in ${r.name} · ${this.rng.int(6, 60)} players`, "info");
+      this.emit("match", r.name, `Match resolved in ${r.name}, ${this.rng.int(6, 60)} players`, "info");
     }
 
     this.recompute();

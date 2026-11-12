@@ -28,7 +28,7 @@ function List({ alerts, now }: { alerts: ReturnType<typeof store.alerts.active>;
         <li key={a.id} className={`alert alert--${a.severity}${a.acknowledged ? " alert--ack" : ""}`}>
           <span className="alert__sev">{a.severity}</span>
           <span className="alert__what">
-            {a.label} · {a.region}
+            {a.label}, {a.region}
           </span>
           <span className="alert__age">{Math.max(0, Math.round((now - a.openedAtTick) / TICKS_PER_SEC))}s</span>
           {a.acknowledged ? (

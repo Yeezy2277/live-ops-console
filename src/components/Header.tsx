@@ -32,7 +32,7 @@ export function Header() {
         <span className="hdr__logo" aria-hidden="true" />
         <div>
           <h1 className="hdr__title">Pulse</h1>
-          <div className="hdr__sub">Live ops console · seed {store.seed}</div>
+          <div className="hdr__sub">Live ops console / seed {store.seed}</div>
         </div>
       </div>
 

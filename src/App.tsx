@@ -30,7 +30,7 @@ export default function App() {
       <MetricsRow />
       <div className="grid">
         <section className="panel panel--map" aria-labelledby="p-map">
-          <h2 className="panel__title" id="p-map">World map · live</h2>
+          <h2 className="panel__title" id="p-map">World map, live</h2>
           <ErrorBoundary area="world map">
             <WorldMap />
           </ErrorBoundary>
@@ -54,7 +54,7 @@ export default function App() {
       </div>
       </main>
       <footer className="foot">
-        Client-side simulation · rendered on canvas · no backend ·{" "}
+        Client-side simulation, rendered on canvas, no backend.{" "}
         <a href="https://github.com/Yeezy2277/live-ops-console">source</a>
       </footer>
     </div>

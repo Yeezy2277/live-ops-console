@@ -8,7 +8,7 @@ A real-time operations console for a fictional multiplayer game — the kind of
 is *simulated on the client* and painted on `<canvas>`, so the whole thing runs
 as a static site on free hosting.
 
-> **Live demo:** <https://pulse.vitaliipopov.dev> · no backend, no login
+> **Live demo:** <https://pulse.vitaliipopov.dev>, no backend, no login
 
 It's a deliberate change of register from the rest of my portfolio (which is
 Contentful-heavy): this one is about **real-time UI** — high-frequency state,
@@ -86,5 +86,5 @@ npm test           # Vitest: sim, alerting and RNG unit tests + component tests 
 npm run build      # static bundle in dist/
 ```
 
-Stack: React 18 · TypeScript · Vite · Canvas 2D · Google Fonts (Chakra Petch, JetBrains Mono). No runtime dependencies beyond
+Stack: React 18, TypeScript, Vite, Canvas 2D, Google Fonts (Chakra Petch, JetBrains Mono). No runtime dependencies beyond
 React — ~50 kB gzipped.
