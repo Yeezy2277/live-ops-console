@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { store, useTick } from "../store/store";
+import { Icon } from "./Icon";
 
 type Theme = "dark" | "light";
 
@@ -48,10 +49,10 @@ export function Header() {
             aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
             title={theme === "dark" ? "Light theme" : "Dark theme"}
           >
-            <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+            <Icon name={theme === "dark" ? "sun" : "moon"} />
           </button>
           <button className="hdr__btn" onClick={store.toggle} aria-label={running ? "Pause simulation" : "Resume simulation"}>
-            <span aria-hidden="true">{running ? "❚❚" : "▶"}</span> {running ? "Pause" : "Resume"}
+            <Icon name={running ? "pause" : "play"} size={14} /> {running ? "Pause" : "Resume"}
           </button>
         </div>
       </div>
