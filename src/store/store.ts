@@ -43,8 +43,8 @@ class Store {
   private advance() {
     this.world.step();
     const { opened, resolved } = this.alerts.evaluate(this.world.tick, this.world.regions);
-    for (const a of opened) this.world.log("alert", a.region, `ALERT ${a.label} · ${a.region}`, a.severity);
-    for (const a of resolved) this.world.log("recover", a.region, `RESOLVED ${a.label} · ${a.region}`, "info");
+    for (const a of opened) this.world.log("alert", a.region, `ALERT ${a.label}, ${a.region}`, a.severity);
+    for (const a of resolved) this.world.log("recover", a.region, `RESOLVED ${a.label}, ${a.region}`, "info");
     this.notify();
   }
 
