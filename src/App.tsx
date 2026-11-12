@@ -19,7 +19,7 @@ export default function App() {
       <main id="main" tabIndex={-1}>
       <p className="lede">
         There's no server here. A deterministic game world runs entirely in your
-        browser — it ticks at <strong>4&nbsp;Hz</strong>, and an observable store
+        browser. It ticks at <strong>4&nbsp;Hz</strong>, and an observable store
         feeds the numbers while a <code>requestAnimationFrame</code> loop paints
         the map on canvas at <strong>60&nbsp;fps</strong>, decoupled from React.
         Break a region on purpose, watch the alert wait out its threshold, step
